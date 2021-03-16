@@ -1,23 +1,59 @@
 package com.fundtransfer.dto;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class TransferResponse {
 
+  public static class Builder {
+
     private String status;
     private List<String> errors;
     private Long taxCollected;
+    private BigDecimal CAD;
 
-  public String getCad() {
-    return cad;
+    public Builder(String status) {
+      this.status = status;
+    }
+
+    public Builder withErrors(List<String> errors) {
+      this.errors = errors;
+      return this;
+    }
+
+    public Builder withTaxCollected(Long taxCollected) {
+      this.taxCollected = taxCollected;
+      return this;
+    }
+
+    public Builder withCAD(BigDecimal CAD) {
+      this.CAD = CAD;
+      return this;
+    }
+
+    public TransferResponse build() {
+      TransferResponse transferResponse = new TransferResponse();
+      transferResponse.status = this.status;
+      transferResponse.errors = this.errors;
+      transferResponse.taxCollected = this.taxCollected;
+      transferResponse.CAD = this.CAD;
+      return transferResponse;
+    }
+
   }
 
-  public void setCad(String cad) {
-    this.cad = cad;
+  private String status;
+  private List<String> errors;
+  private Long taxCollected;
+  private BigDecimal CAD;
+
+  public BigDecimal getCAD() {
+    return CAD;
   }
 
-  private String cad;
-
+  public void setCAD(BigDecimal CAD) {
+    this.CAD = CAD;
+  }
 
   public String getStatus() {
     return status;
@@ -43,7 +79,12 @@ public class TransferResponse {
     this.taxCollected = taxCollected;
   }
 
-
-
-
 }
+
+
+
+
+
+
+
+

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountRepository extends JpaRepository<AccountEntity, Long> {
 
-  @Query("select account from AccountEntity where account.numAccount = :numAccount")
+  @Query("select account from AccountEntity account where account.numAccount = :numAccount")
   AccountEntity findByNumAccount(String numAccount);
 
 

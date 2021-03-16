@@ -12,4 +12,7 @@ public interface AttemptRepository extends JpaRepository<AttemptEntity, Long> {
     @Query("select attempt from AttemptEntity attempt where attempt.originAccount = :originAccount and attempt.attempts >= 3")
     AttemptEntity findAttemptByOriginAccountAndCurrentDate(String originAccount);
 
+    @Query("select attempt from AttemptEntity attempt where attempt.originAccount = :originAccount")
+    AttemptEntity findAttemptByOriginAccount(String originAccount);
+
 }
